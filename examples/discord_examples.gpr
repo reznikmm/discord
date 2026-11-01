@@ -1,0 +1,23 @@
+--  SPDX-FileCopyrightText: 2026 Max Reznik <reznikmm@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+
+with "config/discord_examples_config.gpr";
+project Discord_Examples is
+
+   for Source_Dirs use ("src/", "config/");
+   for Object_Dir use ".obj/" & Discord_Examples_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Exec_Dir use "bin";
+   for Main use ("echo_bot.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use
+        Discord_Examples_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-Es"); --  Symbolic traceback
+   end Binder;
+
+end Discord_Examples;

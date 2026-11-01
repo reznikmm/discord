@@ -1,0 +1,28 @@
+name = "discord"
+description = "Discord API client library"
+version = "0.1.0-dev"
+
+authors = ["Max Reznik"]
+maintainers = ["Max Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["reznikmm"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/reznikmm/discord"
+tags = ["discord", "bot", "api", "websocket"]
+
+[build-switches]
+"*".Ada_Version = "Ada2022"
+development.optimization = ["-O0"]
+development.style_checks = ["-gnaty", "-gnaty-B"]
+development.contracts = "Yes"
+"*".debug_info = "Yes"
+
+[[actions]]
+type = "test"
+command = ["alr", "-C" , "testsuite", "run"]
+
+[[depends-on]]
+vss_extra = "^26.2.0"
+aht = "*"
+
+[[pins]]
+aht = { url = "https://github.com/ovenpasta/aht", commit = "664d5ddeb568626b2f9ff66054c7091894b3b8d4" }
